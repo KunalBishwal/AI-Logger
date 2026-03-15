@@ -54,7 +54,7 @@ export const HomeScreen: React.FC<{ navigation: any }> = ({ navigation }) => {
   // Animations
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const heroSlide = useRef(new Animated.Value(30)).current;
-  const featureAnims = features.map(() => useRef(new Animated.Value(0)).current);
+  const featureAnims = useRef(features.map(() => new Animated.Value(0))).current;
   const statsSlide = useRef(new Animated.Value(50)).current;
 
   useFocusEffect(
