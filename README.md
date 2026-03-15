@@ -1,119 +1,165 @@
-# AI Sales Visit Logger
-
-A React Native (Expo) mobile app for field sales reps to log customer visits, generate AI-powered summaries, and sync data with the cloud — all with offline-first support.
-
-## ✨ Features
-
-- **Authentication** — Email/password login with persistent sessions (Firebase Auth)
-- **Visit Logging** — Create, edit, and view detailed customer visit logs
-- **AI Summaries** — Generate structured summaries from raw meeting notes using Google Gemini
-- **Offline-First** — Full CRUD operations work without internet (AsyncStorage)
-- **Cloud Sync** — Automatic sync to Firebase Firestore with retry on failure
-- **Dark/Light Mode** — Beautiful theme system with purple gradient accents
-- **Animated UI** — Smooth entrance animations, press effects, and transitions
-
-## 🚀 Setup Instructions
-
-### Prerequisites
-
-- Node.js 18+
-- npm or yarn
-- Expo Go app on your phone (for testing) **or** Android/iOS emulator
-
-### Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/KunalBishwal/AI-Logger.git
-cd HealEsy1
-
-# Install dependencies
-npm install
-
-# Start the development server
-npx expo start
-```
-
-### Environment Variables
-
-Create a `.env` file in the root directory:
-
-```env
-EXPO_PUBLIC_FIREBASE_API_KEY=your_api_key
-EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
-EXPO_PUBLIC_FIREBASE_PROJECT_ID=your_project_id
-EXPO_PUBLIC_FIREBASE_STORAGE_BUCKET=your_project.appspot.com
-EXPO_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
-EXPO_PUBLIC_FIREBASE_APP_ID=your_app_id
-EXPO_PUBLIC_FIREBASE_MEASUREMENT_ID=your_measurement_id
-EXPO_PUBLIC_GEMINI_API_KEY=your_gemini_api_key
-```
-
-### Firebase Setup
-
-1. Create a Firebase project at [console.firebase.google.com](https://console.firebase.google.com)
-2. Enable **Email/Password** authentication
-3. Create a **Firestore** database
-4. Copy your config values to `.env`
-
-### Running
-
-```bash
-# Start Expo dev server
-npx expo start
-
-# Scan the QR code with Expo Go (Android) or Camera app (iOS)
-# OR press 'a' for Android emulator / 'i' for iOS simulator
-```
-
-## 🤖 Gemini AI API Keys
-
-To use the AI summary feature, you need a Google Gemini API Key:
-
-1. **Get a Key**: Visit [Google AI Studio](https://aistudio.google.com/) and create a free API key.
-2. **Setup**: Add the key to your `.env` file as `EXPO_PUBLIC_GEMINI_API_KEY`.
-3. **Rate Limits**: 
-   - The free tier has limits (approx 15 requests per minute).
-   - If you hit a rate limit, the app will show a **"Rate limit hit"** warning in the console and automatically retry (up to 5 times) with exponential backoff before showing an error toast in the app.
-
-## 📁 Project Structure
-
-```
-├── App.tsx                     # Entry point with navigation
-├── src/
-│   ├── config/firebase.ts      # Firebase initialization
-│   ├── contexts/
-│   │   ├── AuthContext.tsx      # Authentication state
-│   │   └── ThemeContext.tsx     # Dark/light theme
-│   ├── services/
-│   │   ├── storageService.ts   # AsyncStorage wrapper
-│   │   ├── syncService.ts      # Firestore sync engine
-│   │   └── aiService.ts        # Gemini AI integration
-│   ├── screens/
-│   │   ├── LoginScreen.tsx     # Authentication
-│   │   ├── HomeScreen.tsx      # Dashboard & app info
-│   │   ├── VisitListScreen.tsx # Visit log list
-│   │   ├── VisitFormScreen.tsx # Create/edit visits
-│   │   └── VisitDetailScreen.tsx # Full visit details
-│   ├── components/             # Reusable UI components
-│   ├── theme/colors.ts         # Color palettes
-│   ├── types/index.ts          # TypeScript interfaces
-│   └── utils/validation.ts     # Form validation
-```
-
-## 🏗️ Architecture
-
-See [ARCHITECTURE.md](./ARCHITECTURE.md) for detailed architecture notes.
-
-## 📱 Tech Stack
-
-| Technology | Purpose |
-|-----------|---------|
-| React Native + Expo | Mobile framework |
-| TypeScript | Type safety |
-| Firebase Auth | Authentication |
-| Cloud Firestore | Remote database |
-| AsyncStorage | Local persistence |
-| Google Gemini AI | AI summaries |
-| React Navigation | Screen navigation |
-| Expo Linear Gradient | Gradient UI effects |
+diff --git a/c:\Coding\HealEsy1\README.md b/c:\Coding\HealEsy1\README.md
+new file mode 100644
+--- /dev/null
++++ b/c:\Coding\HealEsy1\README.md
+@@ -0,0 +1,160 @@
++# AI Sales Visit Logger
++
++A React Native (Expo) mobile app for field sales reps to log customer visits, generate AI-powered summaries, and sync data with the cloud with an offline-first workflow.
++
++## Repository
++
++- GitHub: https://github.com/KunalBishwal/AI-Logger
++- Demo video: https://www.loom.com/share/0cdf8b7ac62047b0b0f0c69195513c89
++
++## Features
++
++- Email/password authentication with Firebase Auth
++- Create, edit, and review customer visit logs
++- AI-generated visit summaries using Google Gemini
++- Offline-first local storage with AsyncStorage
++- Sync visit data to Firebase Firestore
++- Light and dark theme support
++- Animated UI built with Expo and React Navigation
++
++## Tech Stack
++
++- React Native
++- Expo
++- TypeScript
++- Firebase Auth
++- Cloud Firestore
++- AsyncStorage
++- Google Gemini API
++- React Navigation
++
++## Prerequisites
++
++- Node.js 18 or newer
++- npm
++- Expo Go on a physical Android/iPhone device, or an Android/iOS simulator
++
++## Setup
++
++### 1. Clone the repository
++
++```bash
++git clone https://github.com/KunalBishwal/AI-Logger.git
++cd AI-Logger
++```
++
++If you clone into a custom folder name, use that folder name instead of `AI-Logger`.
++
++### 2. Install dependencies
++
++```bash
++npm install
++```
++
++### 3. Create the environment file
++
++Create a `.env` file in the project root:
++
++```env
++EXPO_PUBLIC_FIREBASE_API_KEY=your_api_key
++EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
++EXPO_PUBLIC_FIREBASE_PROJECT_ID=your_project_id
++EXPO_PUBLIC_FIREBASE_STORAGE_BUCKET=your_project.appspot.com
++EXPO_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
++EXPO_PUBLIC_FIREBASE_APP_ID=your_app_id
++EXPO_PUBLIC_FIREBASE_MEASUREMENT_ID=your_measurement_id
++EXPO_PUBLIC_GEMINI_API_KEY=your_gemini_api_key
++```
++
++## Firebase Setup
++
++1. Create a Firebase project.
++2. Enable Email/Password authentication.
++3. Create a Firestore database.
++4. Copy the Firebase config values into `.env`.
++
++## Running the App
++
++Start the Expo development server:
++
++```bash
++npx expo start
++```
++
++You can also use the npm scripts:
++
++```bash
++npm run start
++npm run android
++npm run ios
++```
++
++### Test on a phone
++
++- Android: scan the QR code with Expo Go
++- iPhone: scan the QR code with the Camera app or open it in Expo Go
++
++### Test on an Android emulator
++
++- Press `a` in the Expo terminal after the emulator is running
++- If `expo` is not recognized on your machine, use `npx expo start`
++
++## Gemini API Notes
++
++- The AI summary feature requires a valid Gemini API key.
++- Free-tier Gemini keys may hit rate limits.
++- If rate limiting happens, the app retries automatically before showing an error.
++
++## Troubleshooting
++
++### Expo command not found
++
++Use:
++
++```bash
++npx expo start
++```
++
++instead of:
++
++```bash
++expo start
++```
++
++### Android emulator opens a black screen
++
++The app works reliably on a physical device with Expo Go. On some newer Android emulator images, Expo Go can open the project and then show a black screen or close the experience without a JavaScript crash.
++
++Recommended workaround:
++
++- Prefer a physical device with Expo Go for review/demo
++- Or use an Android 14 / API 34 emulator image
++- If needed, use a development build instead of Expo Go on newer emulator images
++
++## Project Structure
++
++```text
++App.tsx
++index.ts
++src/
++  components/
++  config/
++  contexts/
++  screens/
++  services/
++  theme/
++  types/
++  utils/
++```
++
++## Architecture
++
++Detailed architecture notes are available here:
++
++- [ARCHITECTURE.md](./ARCHITECTURE.md)
++
++## Notes
++
++- Visit data is stored locally first and synced later.
++- Firebase auth persistence is enabled for session reuse.
++- AI summaries are generated on demand and stored with the visit record.
