@@ -24,7 +24,7 @@ A React Native (Expo) mobile app for field sales reps to log customer visits, ge
 
 ```bash
 # Clone the repository
-git clone <repo-url>
+git clone https://github.com/KunalBishwal/AI-Logger.git
 cd HealEsy1
 
 # Install dependencies
