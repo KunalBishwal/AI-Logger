@@ -52,7 +52,7 @@ Local (AsyncStorage)           Remote (Firestore)
 
 ## AI Integration Approach
 
-- **Google Gemini 1.5 Flash** model via REST API (`generativelanguage.googleapis.com`)
+- **Google Gemini 2.5 Flash** model via REST API (`generativelanguage.googleapis.com`)
 - Prompt requests structured JSON output with: `meetingSummary`, `painPoints[]`, `actionItems[]`, `recommendedNextStep`
 - Response is parsed and validated before storage
 - Works on-demand — user triggers generation from the form or detail screen
