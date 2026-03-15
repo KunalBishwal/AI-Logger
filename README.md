@@ -6,7 +6,7 @@ A React Native (Expo) mobile app for field sales reps to log customer visits, ge
 
 - **Authentication** — Email/password login with persistent sessions (Firebase Auth)
 - **Visit Logging** — Create, edit, and view detailed customer visit logs
-- **AI Summaries** — Generate structured summaries from raw meeting notes using DeepSeek AI
+- **AI Summaries** — Generate structured summaries from raw meeting notes using Google Gemini
 - **Offline-First** — Full CRUD operations work without internet (AsyncStorage)
 - **Cloud Sync** — Automatic sync to Firebase Firestore with retry on failure
 - **Dark/Light Mode** — Beautiful theme system with purple gradient accents
@@ -46,7 +46,7 @@ EXPO_PUBLIC_FIREBASE_STORAGE_BUCKET=your_project.appspot.com
 EXPO_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
 EXPO_PUBLIC_FIREBASE_APP_ID=your_app_id
 EXPO_PUBLIC_FIREBASE_MEASUREMENT_ID=your_measurement_id
-DEEPSEEK_API_KEY=your_deepseek_api_key
+EXPO_PUBLIC_GEMINI_API_KEY=your_gemini_api_key
 ```
 
 ### Firebase Setup
@@ -66,13 +66,14 @@ npx expo start
 # OR press 'a' for Android emulator / 'i' for iOS simulator
 ```
 
-## 🤖 DeepSeek AI API Keys
+## 🤖 Gemini AI API Keys
 
-To use the AI summary feature, you need a DeepSeek API Key:
+To use the AI summary feature, you need a Google Gemini API Key:
 
-1. **Get a Key**: Visit [DeepSeek Platform](https://platform.deepseek.com/) and create an API key.
-2. **Setup**: Add the key to your `.env` file as `EXPO_PUBLIC_DEEPSEEK_API_KEY`.
-3. **Robustness**: 
+1. **Get a Key**: Visit [Google AI Studio](https://aistudio.google.com/) and create a free API key.
+2. **Setup**: Add the key to your `.env` file as `EXPO_PUBLIC_GEMINI_API_KEY`.
+3. **Rate Limits**: 
+   - The free tier has limits (approx 15 requests per minute).
    - If you hit a rate limit, the app will show a **"Rate limit hit"** warning in the console and automatically retry (up to 5 times) with exponential backoff before showing an error toast in the app.
 
 ## 📁 Project Structure
@@ -87,7 +88,7 @@ To use the AI summary feature, you need a DeepSeek API Key:
 │   ├── services/
 │   │   ├── storageService.ts   # AsyncStorage wrapper
 │   │   ├── syncService.ts      # Firestore sync engine
-│   │   └── aiService.ts        # DeepSeek AI integration
+│   │   └── aiService.ts        # Gemini AI integration
 │   ├── screens/
 │   │   ├── LoginScreen.tsx     # Authentication
 │   │   ├── HomeScreen.tsx      # Dashboard & app info
@@ -113,6 +114,6 @@ See [ARCHITECTURE.md](./ARCHITECTURE.md) for detailed architecture notes.
 | Firebase Auth | Authentication |
 | Cloud Firestore | Remote database |
 | AsyncStorage | Local persistence |
-| DeepSeek AI | AI summaries |
+| Google Gemini AI | AI summaries |
 | React Navigation | Screen navigation |
 | Expo Linear Gradient | Gradient UI effects |

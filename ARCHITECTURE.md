@@ -10,7 +10,7 @@ User Action → Screen Component → Service Layer → Storage
 
 1. **Create/Edit Visit**: User fills form → validated → saved to AsyncStorage as `draft` → UI updates immediately
 2. **Sync**: Pull-to-refresh or manual trigger → reads all `draft`/`failed` visits → pushes each to Firestore → updates local status to `synced` or `failed`
-3. **AI Summary**: User taps "Generate" → raw notes sent to DeepSeek API → structured JSON response parsed → stored alongside visit data
+3. **AI Summary**: User taps "Generate" → raw notes sent to Gemini API → structured JSON response parsed → stored alongside visit data
 4. **Auth**: Firebase `onAuthStateChanged` listener persists session via AsyncStorage → auto-login on app restart
 
 ## Local Persistence Approach
@@ -52,7 +52,7 @@ Local (AsyncStorage)           Remote (Firestore)
 
 ## AI Integration Approach
 
-- **DeepSeek AI (deepseek-chat)** model via OpenAI-compatible REST API (`api.deepseek.com`)
+- **Google Gemini 1.5 Flash** model via REST API (`generativelanguage.googleapis.com`)
 - Prompt requests structured JSON output with: `meetingSummary`, `painPoints[]`, `actionItems[]`, `recommendedNextStep`
 - Response is parsed and validated before storage
 - Works on-demand — user triggers generation from the form or detail screen
@@ -72,4 +72,4 @@ Local (AsyncStorage)           Remote (Firestore)
 3. **Theme color system** — manually tuned color values to match the reference dark purple/navy design with neon purple accents, rather than using generic defaults
 4. **Navigation structure** — adjusted the tab + stack navigator nesting to properly support deep navigation (list → detail → form → back)
 5. **Validation logic** — conditional follow-up date requirement (only when outcome is "follow-up needed") was refined from initial AI suggestions
-6. **DeepSeek API prompt engineering** — crafted the prompt to return clean JSON via `response_format`, added response cleaning/validation
+6. **Gemini API prompt engineering** — crafted the prompt to return clean JSON via `response_format`, added response cleaning/validation
